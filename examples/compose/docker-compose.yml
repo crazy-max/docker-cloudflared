@@ -1,0 +1,17 @@
+version: "3.2"
+
+services:
+  cloudflared:
+    image: crazymax/cloudflared:latest
+    container_name: cloudflared
+    ports:
+      - target: 5053
+        published: 5053
+        protocol: udp
+      - target: 49312
+        published: 49312
+        protocol: tcp
+    environment:
+      - "TZ=Europe/Paris"
+      - "TUNNEL_DNS_UPSTREAM=https://1.1.1.1/dns-query,https://1.0.0.1/dns-query"
+    restart: always
