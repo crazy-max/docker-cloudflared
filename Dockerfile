@@ -52,3 +52,6 @@ EXPOSE 49312/tcp
 
 ENTRYPOINT [ "/usr/local/bin/cloudflared" ]
 CMD [ "proxy-dns" ]
+
+HEALTHCHECK --interval=30s --timeout=20s --start-period=10s \
+  CMD dig +short @127.0.0.1 -p 5053 cloudflare.com A || exit 1
