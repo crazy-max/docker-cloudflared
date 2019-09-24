@@ -2,10 +2,10 @@ name: build
 
 on:
   pull_request:
-    branches: master
+    branches: 'master'
   push:
-    branches: master
-    tags: *
+    branches: 'master'
+    tags: '*'
 
 jobs:
   build:
