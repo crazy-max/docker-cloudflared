@@ -1,6 +1,7 @@
 <p align="center"><a href="https://github.com/crazy-max/docker-cloudflared" target="_blank"><img height="128"src=".res/docker-cloudflared.jpg"></a></p>
 
 <p align="center">
+  <a href="https://hub.docker.com/r/crazymax/cloudflared/tags?page=1&ordering=last_updated"><img src="https://img.shields.io/github/release/crazy-max/cloudflared.svg?style=flat-square" alt="Latest Version"></a>
   <a href="https://hub.docker.com/r/crazymax/cloudflared/"><img src="https://img.shields.io/badge/dynamic/json.svg?label=version&query=$.results[1].name&url=https://hub.docker.com/v2/repositories/crazymax/cloudflared/tags&style=flat-square" alt="Latest Version"></a>
   <a href="https://github.com/crazy-max/docker-cloudflared/actions"><img src="https://github.com/crazy-max/docker-cloudflared/workflows/build/badge.svg" alt="Build Status"></a>
   <a href="https://hub.docker.com/r/crazymax/cloudflared/"><img src="https://img.shields.io/docker/stars/crazymax/cloudflared.svg?style=flat-square" alt="Docker Stars"></a>
