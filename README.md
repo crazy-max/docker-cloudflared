@@ -24,9 +24,9 @@ If you are interested, [check out](https://hub.docker.com/r/crazymax/) my other 
 
 ## Docker
 
-### Multi-platform
+### Multi-platform image
 
-Following multi-platform image are available:
+Following platforms for this image are available:
 
 ```
 $ docker run --rm mplatform/mquery crazymax/cloudflared:latest
@@ -38,7 +38,6 @@ Image: crazymax/cloudflared:latest
    - linux/arm/v7
    - linux/arm64
    - linux/386
-   - linux/ppc64le
    - linux/s390x
 ```
 

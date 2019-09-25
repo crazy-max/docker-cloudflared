@@ -1,5 +1,9 @@
 # syntax=docker/dockerfile:experimental
-FROM --platform=amd64 golang:alpine as builder
+FROM --platform=${TARGETPLATFORM:-linux/amd64} golang:alpine as builder
+
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
+RUN printf "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM\n$(uname -a)\n"
 
 ENV CLOUDFLARED_VERSION="2019.9.0"
 
@@ -12,12 +16,10 @@ RUN apk --update --no-cache add \
 
 RUN git clone --branch ${CLOUDFLARED_VERSION} https://github.com/cloudflare/cloudflared /go/src/github.com/cloudflare/cloudflared
 WORKDIR /go/src/github.com/cloudflare/cloudflared
-COPY gobuild.sh ./
-RUN bash gobuild.sh ${TARGETPLATFORM}
+RUN make cloudflared
 RUN ./cloudflared --version
 
-ARG TARGETPLATFORM
-FROM --platform=$TARGETPLATFORM alpine:latest
+FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:latest
 
 LABEL maintainer="CrazyMax" \
   org.label-schema.name="cloudflared" \
@@ -44,6 +46,7 @@ RUN apk --update --no-cache add \
   && rm -rf /tmp/* /var/cache/apk/*
 
 COPY --from=builder /go/src/github.com/cloudflare/cloudflared/cloudflared /usr/local/bin/cloudflared
+RUN cloudflared --version
 
 USER cloudflared
 
