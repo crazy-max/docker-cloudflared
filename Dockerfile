@@ -3,9 +3,9 @@ FROM --platform=${TARGETPLATFORM:-linux/amd64} golang:alpine as builder
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
-RUN printf "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM\n$(uname -a)\n"
+RUN printf "I am running on ${BUILDPLATFORM:-linux/amd64}, building for ${TARGETPLATFORM:-linux/amd64}\n$(uname -a)\n"
 
-ENV CLOUDFLARED_VERSION="2019.9.0"
+ENV CLOUDFLARED_VERSION="2019.9.1"
 
 RUN apk --update --no-cache add \
     bash \
@@ -17,7 +17,6 @@ RUN apk --update --no-cache add \
 RUN git clone --branch ${CLOUDFLARED_VERSION} https://github.com/cloudflare/cloudflared /go/src/github.com/cloudflare/cloudflared
 WORKDIR /go/src/github.com/cloudflare/cloudflared
 RUN make cloudflared
-RUN ./cloudflared --version
 
 FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:latest
 
