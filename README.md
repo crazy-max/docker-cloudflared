@@ -56,7 +56,7 @@ Image: crazymax/cloudflared:latest
 
 ### Docker Compose
 
-Docker compose is the recommended way to run this image. You can use the following [docker compose template](examples/compose/docker-compose.yml), then run the container :
+Docker compose is the recommended way to run this image. You can use the following [docker compose template](examples/compose/docker-compose.yml), then run the container:
 
 ```bash
 docker-compose up -d
@@ -73,6 +73,14 @@ docker run -d --name cloudflared \
   -p 49312:49312 \
   crazymax/cloudflared:latest
 ```
+
+## Notes
+
+### Use with Pi-hole
+
+[Pi-hole](https://pi-hole.net/) currently [provides documentation](https://docs.pi-hole.net/guides/dns-over-https/) to manually set up DNS-Over-HTTPS with Cloudflared.
+
+With Docker and this image, it's quite easy to use it with [Pi-hole](https://pi-hole.net/). Take a look at this simple [docker compose template](examples/pihole/docker-compose.yml) and you're ready to go.
 
 ## Upgrade
 

@@ -1,0 +1,54 @@
+version: "3.5"
+
+services:
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    hostname: pihole
+    networks:
+      pihole:
+        ipv4_address: 172.20.0.1
+    ports:
+      - target: 53
+        published: 53
+        protocol: tcp
+      - target: 53
+        published: 53
+        protocol: udp
+      - target: 67
+        published: 67
+        protocol: udp
+      - target: 80
+        published: 80
+        protocol: tcp
+      - target: 443
+        published: 443
+        protocol: tcp
+    environment:
+      - "TZ=Europe/Paris"
+      - "PROXY_LOCATION=pihole"
+      - "VIRTUAL_PORT=80"
+      - "DNS1=172.20.0.2#5053"
+      - "DNS2=1.1.1.1"
+    volumes:
+      - "./etc-pihole/:/etc/pihole/"
+      - "./etc-dnsmasq.d/:/etc/dnsmasq.d/"
+    restart: always
+
+  cloudflared:
+    image: crazymax/cloudflared:latest
+    container_name: cloudflared
+    hostname: cloudflared
+    networks:
+      pihole:
+        ipv4_address: 172.20.0.2
+    environment:
+      - "TZ=Europe/Paris"
+      - "TUNNEL_DNS_UPSTREAM=https://1.1.1.1/dns-query,https://1.0.0.1/dns-query"
+    restart: always
+
+networks:
+  pihole:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
