@@ -7,7 +7,7 @@ services:
     hostname: pihole
     networks:
       pihole:
-        ipv4_address: 172.20.0.1
+        ipv4_address: 172.20.0.2
     ports:
       - target: 53
         published: 53
@@ -41,7 +41,7 @@ services:
     hostname: cloudflared
     networks:
       pihole:
-        ipv4_address: 172.20.0.2
+        ipv4_address: 172.20.0.3
     environment:
       - "TZ=Europe/Paris"
       - "TUNNEL_DNS_UPSTREAM=https://1.1.1.1/dns-query,https://1.0.0.1/dns-query"
