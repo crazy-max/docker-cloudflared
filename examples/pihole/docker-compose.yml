@@ -8,6 +8,9 @@ services:
     networks:
       pihole:
         ipv4_address: 172.20.0.2
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
     ports:
       - target: 53
         published: 53
@@ -28,7 +31,7 @@ services:
       - "TZ=Europe/Paris"
       - "PROXY_LOCATION=pihole"
       - "VIRTUAL_PORT=80"
-      - "DNS1=172.20.0.2#5053"
+      - "DNS1=172.20.0.3#5053"
       - "DNS2=1.1.1.1"
     volumes:
       - "./etc-pihole/:/etc/pihole/"
