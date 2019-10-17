@@ -17,11 +17,6 @@ If you are interested, [check out](https://hub.docker.com/r/crazymax/) my other 
 
 💡 Want to be notified of new releases? Check out 🔔 [Diun (Docker Image Update Notifier)](https://github.com/crazy-max/diun) project!
 
-## Features
-
-* Alpine Linux 3.10
-* Multi-platform Docker image
-
 ## Docker
 
 ### Multi-platform image
@@ -52,7 +47,7 @@ Image: crazymax/cloudflared:latest
 * `5053/udp` : Listen port for the DNS over HTTPS proxy server
 * `49312/tcp` : Listen port for metrics reporting
 
-## Use this image
+## Usage
 
 ### Docker Compose
 
