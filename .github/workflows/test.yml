@@ -3,8 +3,14 @@ name: test
 on:
   pull_request:
     branches: master
+    paths:
+      - '.github/workflows/test.yml'
+      - 'Dockerfile'
   push:
     branches: master
+    paths:
+      - '.github/workflows/test.yml'
+      - 'Dockerfile'
 
 jobs:
   test:
