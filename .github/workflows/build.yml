@@ -15,7 +15,7 @@ jobs:
       -
         name: Prepare
         id: prepare
-        run: |
+        run: | 
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             TAG=${GITHUB_REF#refs/tags/}
             echo ::set-output name=tag_name::${TAG}
