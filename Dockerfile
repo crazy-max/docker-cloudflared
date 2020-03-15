@@ -20,7 +20,8 @@ RUN apk --update --no-cache add \
 
 RUN git clone --branch ${CLOUDFLARED_VERSION} https://github.com/cloudflare/cloudflared /go/src/github.com/cloudflare/cloudflared
 WORKDIR /go/src/github.com/cloudflare/cloudflared
-RUN make cloudflared
+RUN go mod vendor \
+  && make cloudflared
 
 FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:latest
 
