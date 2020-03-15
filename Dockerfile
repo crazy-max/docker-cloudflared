@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:experimental
-FROM --platform=${TARGETPLATFORM:-linux/amd64} golang:alpine as builder
+FROM --platform=${TARGETPLATFORM:-linux/amd64} golang:1.13-alpine as builder
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -20,8 +20,7 @@ RUN apk --update --no-cache add \
 
 RUN git clone --branch ${CLOUDFLARED_VERSION} https://github.com/cloudflare/cloudflared /go/src/github.com/cloudflare/cloudflared
 WORKDIR /go/src/github.com/cloudflare/cloudflared
-RUN go mod vendor \
-  && make cloudflared
+RUN make cloudflared
 
 FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:latest
 
