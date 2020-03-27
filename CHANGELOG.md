@@ -1,5 +1,9 @@
 # Changelog
 
+## 2020.3.0-RC1 (2020/03/27)
+
+* Cloudflared 2020.3.0
+
 ## 2020.2.1-RC2 (2020/03/15)
 
 * Fix vendor
