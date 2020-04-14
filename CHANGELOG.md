@@ -1,5 +1,10 @@
 # Changelog
 
+## 2020.4.0-RC1 (2020/04/14)
+
+* Cloudflared 2020.4.0
+* Switch to Open Container Specification labels as label-schema.org ones are deprecated
+
 ## 2020.3.2-RC1 (2020/03/31)
 
 * Cloudflared 2020.3.2
