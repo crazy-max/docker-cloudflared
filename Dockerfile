@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:experimental
 FROM --platform=${TARGETPLATFORM:-linux/amd64} golang:1.13-alpine as builder
 
 ARG BUILD_DATE
@@ -9,7 +8,7 @@ ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN printf "I am running on ${BUILDPLATFORM:-linux/amd64}, building for ${TARGETPLATFORM:-linux/amd64}\n$(uname -a)\n"
 
-ENV CLOUDFLARED_VERSION="2020.5.1"
+ENV CLOUDFLARED_VERSION="2020.6.1"
 
 RUN apk --update --no-cache add \
     bash \
