@@ -1,16 +1,18 @@
 name: test
 
 on:
-  pull_request:
-    branches: master
-    paths:
-      - '.github/workflows/test.yml'
-      - 'Dockerfile'
   push:
-    branches: master
-    paths:
-      - '.github/workflows/test.yml'
-      - 'Dockerfile'
+    branches:
+      - '**'
+    tags:
+      - '*'
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    branches:
+      - '**'
+    paths-ignore:
+      - '**.md'
 
 jobs:
   test:
