@@ -6,11 +6,6 @@ ARG VCS_REF
 ARG VERSION
 
 COPY --from=xgo / /
-ARG TARGETPLATFORM
-ARG BUILDPLATFORM
-RUN printf "I am running on ${BUILDPLATFORM:-linux/amd64}, building for ${TARGETPLATFORM:-linux/amd64}\n$(uname -a)\n"
-
-ENV CLOUDFLARED_VERSION="2020.7.0"
 
 RUN apk --update --no-cache add \
     bash \
@@ -19,8 +14,12 @@ RUN apk --update --no-cache add \
     git \
   && rm -rf /tmp/* /var/cache/apk/*
 
+ENV CLOUDFLARED_VERSION="2020.7.1"
 RUN git clone --branch ${CLOUDFLARED_VERSION} https://github.com/cloudflare/cloudflared /go/src/github.com/cloudflare/cloudflared
 WORKDIR /go/src/github.com/cloudflare/cloudflared
+
+ARG TARGETPLATFORM
+ARG BUILDPLATFORM
 RUN go build -v -mod vendor -ldflags "-w -s -X 'main.Version=${CLOUDFLARED_VERSION}' -X 'main.BuildTime=${BUILD_DATE}'" github.com/cloudflare/cloudflared/cmd/cloudflared
 
 FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:latest
