@@ -67,4 +67,4 @@ ENTRYPOINT [ "/usr/local/bin/cloudflared" ]
 CMD [ "proxy-dns" ]
 
 HEALTHCHECK --interval=30s --timeout=20s --start-period=10s \
-  CMD dig +short @127.0.0.1 -p 5053 cloudflare.com A || exit 1
+  CMD dig +short @127.0.0.1 -p $TUNNEL_DNS_PORT cloudflare.com A || exit 1
