@@ -1,5 +1,9 @@
 # Changelog
 
+## 2020.8.2-RC1 (2020/08/21)
+
+* Cloudflared 2020.8.2
+
 ## 2020.8.0-RC2 (2020/08/09)
 
 * Use TUNNEL_DNS_PORT in healthcheck command (#14)
