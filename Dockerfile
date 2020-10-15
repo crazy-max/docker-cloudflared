@@ -1,5 +1,5 @@
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:golang AS xgo
-FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.13-alpine as builder
+FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.15-alpine as builder
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -56,14 +56,14 @@ RUN apk --update --no-cache add \
   && rm -rf /tmp/* /var/cache/apk/*
 
 COPY --from=builder /go/src/github.com/cloudflare/cloudflared/cloudflared /usr/local/bin/cloudflared
-RUN cloudflared --version
+RUN cloudflared --no-autoupdate --version
 
 USER cloudflared
 
 EXPOSE 5053/udp
 EXPOSE 49312/tcp
 
-ENTRYPOINT [ "/usr/local/bin/cloudflared" ]
+ENTRYPOINT [ "/usr/local/bin/cloudflared", "--no-autoupdate" ]
 CMD [ "proxy-dns" ]
 
 HEALTHCHECK --interval=30s --timeout=20s --start-period=10s \

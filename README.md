@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/crazy-max/docker-cloudflared" target="_blank"><img height="128" src=".res/docker-cloudflared.jpg"></a></p>
+<p align="center"><a href="https://github.com/crazy-max/docker-cloudflared" target="_blank"><img height="128" src=".github/docker-cloudflared.jpg"></a></p>
 
 <p align="center">
   <a href="https://hub.docker.com/r/crazymax/cloudflared/tags?page=1&ordering=last_updated"><img src="https://img.shields.io/github/v/tag/crazy-max/docker-cloudflared?label=version&style=flat-square" alt="Latest Version"></a>

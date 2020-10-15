@@ -1,5 +1,10 @@
 # Changelog
 
+## 2020.10.0-RC2 (2020/10/16)
+
+* Go 1.15
+* Disable autoupdate
+
 ## 2020.10.0-RC1 (2020/10/10)
 
 * Cloudflared 2020.10.0
