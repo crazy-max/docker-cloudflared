@@ -14,7 +14,7 @@ RUN apk --update --no-cache add \
     git \
   && rm -rf /tmp/* /var/cache/apk/*
 
-ENV CLOUDFLARED_VERSION="2020.10.0"
+ENV CLOUDFLARED_VERSION="2020.10.2"
 RUN git clone --branch ${CLOUDFLARED_VERSION} https://github.com/cloudflare/cloudflared /go/src/github.com/cloudflare/cloudflared
 WORKDIR /go/src/github.com/cloudflare/cloudflared
 

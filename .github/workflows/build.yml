@@ -57,7 +57,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
         name: Build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@master
         with:
           context: .
           file: ./Dockerfile
