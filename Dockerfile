@@ -1,10 +1,6 @@
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:golang AS xgo
 FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.15-alpine as builder
 
-ARG BUILD_DATE
-ARG VCS_REF
-ARG VERSION
-
 COPY --from=xgo / /
 
 RUN apk --update --no-cache add \
@@ -24,20 +20,7 @@ RUN go build -v -mod vendor -ldflags "-w -s -X 'main.Version=${CLOUDFLARED_VERSI
 
 FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:latest
 
-ARG BUILD_DATE
-ARG VCS_REF
-ARG VERSION
-
-LABEL maintainer="CrazyMax" \
-  org.opencontainers.image.created=$BUILD_DATE \
-  org.opencontainers.image.url="https://github.com/crazy-max/docker-cloudflared" \
-  org.opencontainers.image.source="https://github.com/crazy-max/docker-cloudflared" \
-  org.opencontainers.image.version=$VERSION \
-  org.opencontainers.image.revision=$VCS_REF \
-  org.opencontainers.image.vendor="CrazyMax" \
-  org.opencontainers.image.title="Cloudflared" \
-  org.opencontainers.image.description="Cloudflared proxy-dns" \
-  org.opencontainers.image.licenses="MIT"
+LABEL maintainer="CrazyMax"
 
 ENV TZ="UTC" \
   TUNNEL_METRICS="0.0.0.0:49312" \

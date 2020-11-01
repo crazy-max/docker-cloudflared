@@ -18,7 +18,12 @@ If you are interested, [check out](https://hub.docker.com/r/crazymax/) my other 
 
 ## Docker
 
-### Multi-platform image
+### Image
+
+| Registry                                                                                         | Image                           |
+|--------------------------------------------------------------------------------------------------|---------------------------------|
+| [Docker Hub](https://hub.docker.com/r/crazymax/cloudflared/)                                            | `crazymax/cloudflared`                 |
+| [GitHub Container Registry](https://github.com/users/crazy-max/packages/container/package/cloudflared)  | `ghcr.io/crazy-max/cloudflared`        |
 
 Following platforms for this image are available:
 
@@ -37,16 +42,16 @@ Image: crazymax/cloudflared:latest
 
 ### Environment variables
 
-* `TZ` : The timezone assigned to the container (default `UTC`)
-* `TUNNEL_DNS_UPSTREAM` : Upstream endpoint URL, you can specify multiple endpoints for redundancy. (default `https://1.1.1.1/dns-query,https://1.0.0.1/dns-query`)
+* `TZ`: The timezone assigned to the container (default `UTC`)
+* `TUNNEL_DNS_UPSTREAM`: Upstream endpoint URL, you can specify multiple endpoints for redundancy. (default `https://1.1.1.1/dns-query,https://1.0.0.1/dns-query`)
 * `TUNNEL_DNS_PORT`: DNS listening port (default `5053`)
 * `TUNNEL_DNS_ADDRESS`: DNS listening IP (default `0.0.0.0` "all interfaces")
 * `TUNNEL_DNS_METRICS`: Prometheus metrics host and port. (default `0.0.0.0:49312`)
 
 ### Ports
 
-* `5053/udp` : Listen port for the DNS over HTTPS proxy server
-* `49312/tcp` : Listen port for metrics reporting
+* `5053/udp`: Listen port for the DNS over HTTPS proxy server
+* `49312/tcp`: Listen port for metrics reporting
 
 ## Usage
 
@@ -87,7 +92,7 @@ docker-compose pull
 docker-compose up -d
 ```
 
-## How can I help ?
+## How can I help?
 
 All kinds of contributions are welcome :raised_hands:! The most basic way to show your support is to star :star2: the project, or to raise issues :speech_balloon: You can also support this project by [**becoming a sponsor on GitHub**](https://github.com/sponsors/crazy-max) :clap: or by making a [Paypal donation](https://www.paypal.me/crazyws) to ensure this journey continues indefinitely! :rocket:
 
