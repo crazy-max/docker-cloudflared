@@ -16,6 +16,21 @@ If you are interested, [check out](https://hub.docker.com/r/crazymax/) my other 
 
 💡 Want to be notified of new releases? Check out 🔔 [Diun (Docker Image Update Notifier)](https://github.com/crazy-max/diun) project!
 
+___
+
+* [Docker](#docker)
+  * [Image](#image)
+  * [Environment variables](#environment-variables)
+  * [Ports](#ports)
+* [Usage](#usage)
+  * [Docker Compose](#docker-compose)
+  * [Command line](#command-line)
+* [Upgrade](#upgrade)
+* [Notes](#notes)
+  * [Use with Pi-hole](#use-with-pi-hole)
+* [How can I help?](#how-can-i-help)
+* [License](#license)
+
 ## Docker
 
 ### Image
