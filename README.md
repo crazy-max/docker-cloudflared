@@ -27,6 +27,7 @@ ___
   * [Command line](#command-line)
 * [Upgrade](#upgrade)
 * [Notes](#notes)
+  * [Performance issues](#performance-issues)
   * [Use with Pi-hole](#use-with-pi-hole)
 * [How can I help?](#how-can-i-help)
 * [License](#license)
@@ -91,6 +92,18 @@ docker run -d --name cloudflared \
 ```
 
 ## Notes
+
+### Performance issues
+
+For a DNS server with lots of short-lived connections, you may wish to consider adding `--net=host` to the run command
+or `network_mode: "host"` in your compose file for performance reasons (see [#22](https://github.com/crazy-max/docker-cloudflared/issues/22)).
+However, it is not required and some shared container hosting services may not allow it. You should also be aware
+`--net=host` can be a security risk in some situations. The [Center for Internet Security - Docker 1.6 Benchmark](https://github.com/cismirror/old-benchmarks-archive/blob/master/CIS_Docker_1.6_Benchmark_v1.0.0.pdf)
+recommends against this mode since it essentially tells Docker to not containerize the container's networking, thereby
+giving it full access to the host machine's network interfaces. It also mentions this option could cause the container
+to do unexpected things such as shutting down the Docker host as referenced in [moby/moby#6401](https://github.com/moby/moby/issues/6401).
+For the most secure deployment, unrelated services with confidential data should not be run on the same host or VPS.
+In such cases, using `--net=host` should have limited impact on security.
 
 ### Use with Pi-hole
 
