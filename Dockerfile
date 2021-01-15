@@ -1,5 +1,5 @@
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:golang AS xgo
-FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.15-alpine as builder
+FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.15-alpine3.12 as builder
 
 COPY --from=xgo / /
 
@@ -18,7 +18,7 @@ ARG TARGETPLATFORM
 ARG BUILDPLATFORM
 RUN go build -v -mod vendor -ldflags "-w -s -X 'main.Version=${CLOUDFLARED_VERSION}' -X 'main.BuildTime=${BUILD_DATE}'" github.com/cloudflare/cloudflared/cmd/cloudflared
 
-FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:latest
+FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:3.12
 
 LABEL maintainer="CrazyMax"
 

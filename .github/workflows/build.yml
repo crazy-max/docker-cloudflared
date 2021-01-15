@@ -34,8 +34,12 @@ jobs:
             ${{ env.DOCKERHUB_SLUG }}
             ${{ env.GHCR_SLUG }}
           tag-edge: true
-          tag-match: (.*)-RC
+          tag-match: (.*)-r
           tag-match-group: 1
+          label-custom: |
+            org.opencontainers.image.title=Cloudflared
+            org.opencontainers.image.description=Cloudflared proxy-dns
+            org.opencontainers.image.vendor=CrazyMax
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -60,19 +64,14 @@ jobs:
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
       -
-        name: Build
-        uses: docker/build-push-action@v2
+        name: Build image
+        uses: crazy-max/ghaction-docker-buildx-bake@v1
         with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le
+          files: |
+            ./docker-bake.hcl
+            ${{ steps.docker_meta.outputs.bake-file }}
+          targets: image-all
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
-          labels: |
-            ${{ steps.docker_meta.outputs.labels }}
-            org.opencontainers.image.title=Cloudflared
-            org.opencontainers.image.description=Cloudflared proxy-dns
-            org.opencontainers.image.vendor=CrazyMax
       -
         name: Check manifest
         if: github.event_name != 'pull_request'
