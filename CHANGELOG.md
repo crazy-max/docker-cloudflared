@@ -1,6 +1,6 @@
 # Changelog
 
-## 2020.11.11-r0 (2021/01/15)
+## 2021.1.4-r0 (2021/01/15)
 
 * Cloudflared 2021.1.4
 * Switch to buildx bake
