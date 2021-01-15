@@ -19,6 +19,7 @@ If you are interested, [check out](https://hub.docker.com/r/crazymax/) my other 
 ___
 
 * [Docker](#docker)
+  * [Build locally](#build-locally)
   * [Image](#image)
   * [Environment variables](#environment-variables)
   * [Ports](#ports)
@@ -33,6 +34,19 @@ ___
 * [License](#license)
 
 ## Docker
+
+### Build locally
+
+```shell
+git clone https://github.com/crazy-max/docker-cloudflared.git
+cd docker-cloudflared
+
+# Build image and output to docker (default)
+docker buildx bake
+
+# Build multi-platform image
+docker buildx bake image-all
+```
 
 ### Image
 
