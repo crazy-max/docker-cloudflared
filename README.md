@@ -18,11 +18,10 @@ If you are interested, [check out](https://hub.docker.com/r/crazymax/) my other 
 
 ___
 
-* [Docker](#docker)
-  * [Build locally](#build-locally)
-  * [Image](#image)
-  * [Environment variables](#environment-variables)
-  * [Ports](#ports)
+* [Build locally](#build-locally)
+* [Image](#image)
+* [Environment variables](#environment-variables)
+* [Ports](#ports)
 * [Usage](#usage)
   * [Docker Compose](#docker-compose)
   * [Command line](#command-line)
@@ -33,9 +32,7 @@ ___
 * [How can I help?](#how-can-i-help)
 * [License](#license)
 
-## Docker
-
-### Build locally
+## Build locally
 
 ```shell
 git clone https://github.com/crazy-max/docker-cloudflared.git
@@ -48,7 +45,7 @@ docker buildx bake
 docker buildx bake image-all
 ```
 
-### Image
+## Image
 
 | Registry                                                                                         | Image                           |
 |--------------------------------------------------------------------------------------------------|---------------------------------|
@@ -70,7 +67,7 @@ Image: crazymax/cloudflared:latest
    - linux/ppc64le
 ```
 
-### Environment variables
+## Environment variables
 
 * `TZ`: The timezone assigned to the container (default `UTC`)
 * `TUNNEL_DNS_UPSTREAM`: Upstream endpoint URL, you can specify multiple endpoints for redundancy. (default `https://1.1.1.1/dns-query,https://1.0.0.1/dns-query`)
@@ -78,7 +75,7 @@ Image: crazymax/cloudflared:latest
 * `TUNNEL_DNS_ADDRESS`: DNS listening IP (default `0.0.0.0` "all interfaces")
 * `TUNNEL_DNS_METRICS`: Prometheus metrics host and port. (default `0.0.0.0:49312`)
 
-### Ports
+## Ports
 
 * `5053/udp`: Listen port for the DNS over HTTPS proxy server
 * `49312/tcp`: Listen port for metrics reporting
@@ -136,7 +133,10 @@ docker-compose up -d
 
 ## How can I help?
 
-All kinds of contributions are welcome :raised_hands:! The most basic way to show your support is to star :star2: the project, or to raise issues :speech_balloon: You can also support this project by [**becoming a sponsor on GitHub**](https://github.com/sponsors/crazy-max) :clap: or by making a [Paypal donation](https://www.paypal.me/crazyws) to ensure this journey continues indefinitely! :rocket:
+All kinds of contributions are welcome :raised_hands:! The most basic way to show your support is to star :star2:
+the project, or to raise issues :speech_balloon: You can also support this project by
+[**becoming a sponsor on GitHub**](https://github.com/sponsors/crazy-max) :clap: or by making
+a [Paypal donation](https://www.paypal.me/crazyws) to ensure this journey continues indefinitely! :rocket:
 
 Thanks again for your support, it is much appreciated! :pray:
 
