@@ -10,7 +10,7 @@ RUN apk --update --no-cache add \
     git \
   && rm -rf /tmp/* /var/cache/apk/*
 
-ENV CLOUDFLARED_VERSION="2021.1.4"
+ENV CLOUDFLARED_VERSION="2021.2.1"
 RUN git clone --branch ${CLOUDFLARED_VERSION} https://github.com/cloudflare/cloudflared /go/src/github.com/cloudflare/cloudflared
 WORKDIR /go/src/github.com/cloudflare/cloudflared
 
