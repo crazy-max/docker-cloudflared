@@ -46,8 +46,6 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-        with:
-          buildkitd-flags: "--debug"
       -
         name: Login to DockerHub
         if: github.event_name != 'pull_request'
@@ -64,7 +62,7 @@ jobs:
           username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
       -
-        name: Build image
+        name: Build
         uses: docker/bake-action@v1
         with:
           files: |
