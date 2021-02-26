@@ -1,3 +1,5 @@
+ARG CLOUDFLARED_VERSION=2021.2.5
+
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:golang AS xgo
 FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.15-alpine3.12 as builder
 
@@ -10,7 +12,7 @@ RUN apk --update --no-cache add \
     git \
   && rm -rf /tmp/* /var/cache/apk/*
 
-ENV CLOUDFLARED_VERSION="2021.2.2"
+ARG CLOUDFLARED_VERSION
 RUN git clone --branch ${CLOUDFLARED_VERSION} https://github.com/cloudflare/cloudflared /go/src/github.com/cloudflare/cloudflared
 WORKDIR /go/src/github.com/cloudflare/cloudflared
 
