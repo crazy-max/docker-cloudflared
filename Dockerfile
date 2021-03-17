@@ -1,4 +1,4 @@
-ARG CLOUDFLARED_VERSION=2021.2.5
+ARG CLOUDFLARED_VERSION=2021.3.1
 
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:golang AS xgo
 FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.15-alpine3.12 AS builder
@@ -17,6 +17,8 @@ RUN git clone --branch ${CLOUDFLARED_VERSION} https://github.com/cloudflare/clou
 WORKDIR /go/src/github.com/cloudflare/cloudflared
 
 ARG TARGETPLATFORM
+ENV GO111MODULE=on
+ENV CGO_ENABLED=0
 RUN go build -v -mod vendor -ldflags "-w -s -X 'main.Version=${CLOUDFLARED_VERSION}' -X 'main.BuildTime=${BUILD_DATE}'" github.com/cloudflare/cloudflared/cmd/cloudflared
 
 FROM alpine:3.12
