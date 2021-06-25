@@ -1,4 +1,4 @@
-ARG CLOUDFLARED_VERSION=2021.5.7
+ARG CLOUDFLARED_VERSION=2021.6.0
 
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:golang AS xgo
 FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.16-alpine3.13 AS builder
