@@ -1,5 +1,10 @@
 # Changelog
 
+## 2021.7.4-r0 (2021/08/01)
+
+* Cloudflared 2021.7.4
+* Alpine Linux 3.14
+
 ## 2021.6.0-r0 (2021/06/26)
 
 * Cloudflared 2021.6.0
