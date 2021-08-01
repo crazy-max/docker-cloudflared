@@ -22,7 +22,6 @@ ENV CGO_ENABLED=0
 RUN go build -v -mod vendor -ldflags "-w -s -X 'main.Version=${CLOUDFLARED_VERSION}' -X 'main.BuildTime=${BUILD_DATE}'" github.com/cloudflare/cloudflared/cmd/cloudflared
 
 FROM alpine:3.14
-LABEL maintainer="CrazyMax"
 
 ENV TZ="UTC" \
   TUNNEL_METRICS="0.0.0.0:49312" \
