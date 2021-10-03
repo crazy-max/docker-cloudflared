@@ -1,7 +1,7 @@
-ARG CLOUDFLARED_VERSION=2021.8.7
+ARG CLOUDFLARED_VERSION=2021.9.2
 
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:golang AS xgo
-FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.16-alpine3.14 AS builder
+FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.17-alpine3.14 AS builder
 
 COPY --from=xgo / /
 
