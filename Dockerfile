@@ -10,7 +10,7 @@ RUN apk --update --no-cache add \
     build-base \
     gcc \
     git \
-  && rm -rf /tmp/* /var/cache/apk/*
+  && rm -rf /tmp/*
 
 ARG CLOUDFLARED_VERSION
 RUN git clone --branch ${CLOUDFLARED_VERSION} https://github.com/cloudflare/cloudflared /go/src/github.com/cloudflare/cloudflared
@@ -37,7 +37,7 @@ RUN apk --update --no-cache add \
     tzdata \
   && addgroup -g 1000 cloudflared \
   && adduser -u 1000 -G cloudflared -s /sbin/nologin -D cloudflared \
-  && rm -rf /tmp/* /var/cache/apk/*
+  && rm -rf /tmp/*
 
 COPY --from=builder /go/src/github.com/cloudflare/cloudflared/cloudflared /usr/local/bin/cloudflared
 RUN cloudflared --no-autoupdate --version
