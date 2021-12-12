@@ -73,7 +73,7 @@ Image: crazymax/cloudflared:latest
 * `TUNNEL_DNS_UPSTREAM`: Upstream endpoint URL, you can specify multiple endpoints for redundancy. (default `https://1.1.1.1/dns-query,https://1.0.0.1/dns-query`)
 * `TUNNEL_DNS_PORT`: DNS listening port (default `5053`)
 * `TUNNEL_DNS_ADDRESS`: DNS listening IP (default `0.0.0.0` "all interfaces")
-* `TUNNEL_DNS_METRICS`: Prometheus metrics host and port. (default `0.0.0.0:49312`)
+* `TUNNEL_METRICS`: Prometheus metrics host and port. (default `0.0.0.0:49312`)
 
 ## Ports
 
