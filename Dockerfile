@@ -1,7 +1,7 @@
 ARG CLOUDFLARED_VERSION=2022.1.0
 
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:golang AS xgo
-FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.17-alpine3.14 AS builder
+FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:1.17-alpine AS builder
 
 COPY --from=xgo / /
 
@@ -21,7 +21,7 @@ ENV GO111MODULE=on
 ENV CGO_ENABLED=0
 RUN go build -v -mod vendor -ldflags "-w -s -X 'main.Version=${CLOUDFLARED_VERSION}' -X 'main.BuildTime=${BUILD_DATE}'" github.com/cloudflare/cloudflared/cmd/cloudflared
 
-FROM alpine:3.14
+FROM alpine:3.15
 
 ENV TZ="UTC" \
   TUNNEL_METRICS="0.0.0.0:49312" \
