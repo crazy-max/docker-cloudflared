@@ -1,8 +1,9 @@
 # syntax=docker/dockerfile:1
 
-ARG CLOUDFLARED_VERSION=2022.8.0
-ARG GO_VERSION=1.17
-ARG XX_VERSION=1.1.0
+ARG CLOUDFLARED_VERSION=2022.9.0
+ARG ALPINE_VERSION=3.16
+ARG GO_VERSION=1.18
+ARG XX_VERSION=1.1.2
 
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:${XX_VERSION} AS xx
 FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:${GO_VERSION}-alpine AS builder
@@ -19,7 +20,7 @@ RUN xx-go build -v -mod=vendor -trimpath -o /bin/cloudflared \
     ./cmd/cloudflared \
   && xx-verify --static /bin/cloudflared
 
-FROM alpine:3.15
+FROM alpine:${ALPINE_VERSION}
 
 ENV TZ="UTC" \
   TUNNEL_METRICS="0.0.0.0:49312" \
