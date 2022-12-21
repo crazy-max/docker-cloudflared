@@ -11,10 +11,13 @@
 
 ## About
 
-[Cloudflared](https://github.com/cloudflare/cloudflared) proxy-dns Docker image based on Alpine Linux.<br />
-If you are interested, [check out](https://hub.docker.com/r/crazymax/) my other Docker images!
+Docker image for [Cloudflared](https://github.com/cloudflare/cloudflared), a
+proxy-dns service.
 
-💡 Want to be notified of new releases? Check out 🔔 [Diun (Docker Image Update Notifier)](https://github.com/crazy-max/diun) project!
+> **Note**
+> 
+> Want to be notified of new releases? Check out 🔔 [Diun (Docker Image Update Notifier)](https://github.com/crazy-max/diun)
+> project!
 
 ___
 
