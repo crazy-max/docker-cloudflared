@@ -1,9 +1,11 @@
 # syntax=docker/dockerfile:1
 
-ARG CLOUDFLARED_VERSION=2023.4.1
+ARG CLOUDFLARED_VERSION=2023.5.1
 ARG ALPINE_VERSION=3.17
-ARG GO_VERSION=1.19
 ARG XX_VERSION=1.2.1
+
+# https://github.com/cloudflare/cloudflared/blob/2023.5.1/.github/workflows/check.yaml#L7
+ARG GO_VERSION=1.19
 
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:${XX_VERSION} AS xx
 FROM --platform=${BUILDPLATFORM:-linux/amd64} golang:${GO_VERSION}-alpine AS builder
