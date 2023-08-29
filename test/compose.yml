@@ -1,3 +1,5 @@
+name: cloudflared
+
 services:
   cloudflared:
     image: ${CLOUDFLARED_IMAGE:-crazymax/cloudflared}

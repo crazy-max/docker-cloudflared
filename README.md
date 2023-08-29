@@ -50,10 +50,10 @@ docker buildx bake image-all
 
 ## Image
 
-| Registry                                                                                         | Image                           |
-|--------------------------------------------------------------------------------------------------|---------------------------------|
-| [Docker Hub](https://hub.docker.com/r/crazymax/cloudflared/)                                            | `crazymax/cloudflared`                 |
-| [GitHub Container Registry](https://github.com/users/crazy-max/packages/container/package/cloudflared)  | `ghcr.io/crazy-max/cloudflared`        |
+| Registry                                                                                               | Image                           |
+|--------------------------------------------------------------------------------------------------------|---------------------------------|
+| [Docker Hub](https://hub.docker.com/r/crazymax/cloudflared/)                                           | `crazymax/cloudflared`          |
+| [GitHub Container Registry](https://github.com/users/crazy-max/packages/container/package/cloudflared) | `ghcr.io/crazy-max/cloudflared` |
 
 Following platforms for this image are available:
 
@@ -87,11 +87,13 @@ Image: crazymax/cloudflared:latest
 
 ### Docker Compose
 
-Docker compose is the recommended way to run this image. You can use the following [docker compose template](examples/compose/docker-compose.yml), then run the container:
+Docker compose is the recommended way to run this image. You can use the
+following [docker compose template](examples/compose/compose.yml), then run
+the container:
 
 ```bash
-docker-compose up -d
-docker-compose logs -f
+docker compose up -d
+docker compose logs -f
 ```
 
 ### Command line
@@ -109,29 +111,37 @@ docker run -d --name cloudflared \
 
 ### Performance issues
 
-For a DNS server with lots of short-lived connections, you may wish to consider adding `--net=host` to the run command
-or `network_mode: "host"` in your compose file for performance reasons (see [#22](https://github.com/crazy-max/docker-cloudflared/issues/22)).
-However, it is not required and some shared container hosting services may not allow it. You should also be aware
-`--net=host` can be a security risk in some situations. The [Center for Internet Security - Docker 1.6 Benchmark](https://github.com/cismirror/old-benchmarks-archive/blob/master/CIS_Docker_1.6_Benchmark_v1.0.0.pdf)
-recommends against this mode since it essentially tells Docker to not containerize the container's networking, thereby
-giving it full access to the host machine's network interfaces. It also mentions this option could cause the container
-to do unexpected things such as shutting down the Docker host as referenced in [moby/moby#6401](https://github.com/moby/moby/issues/6401).
-For the most secure deployment, unrelated services with confidential data should not be run on the same host or VPS.
-In such cases, using `--net=host` should have limited impact on security.
+For a DNS server with lots of short-lived connections, you may wish to consider
+adding `--net=host` to the run command or `network_mode: "host"` in your compose
+file for performance reasons (see [#22](https://github.com/crazy-max/docker-cloudflared/issues/22)).
+However, it is not required and some shared container hosting services may not
+allow it. You should also be aware `--net=host` can be a security risk in some
+situations. The [Center for Internet Security - Docker 1.6 Benchmark](https://github.com/cismirror/old-benchmarks-archive/blob/master/CIS_Docker_1.6_Benchmark_v1.0.0.pdf)
+recommends against this mode since it essentially tells Docker to not
+containerize the container's networking, thereby giving it full access to the
+host machine's network interfaces. It also mentions this option could cause the
+container to do unexpected things such as shutting down the Docker host as
+referenced in [moby/moby#6401](https://github.com/moby/moby/issues/6401). For
+the most secure deployment, unrelated services with confidential data should
+not be run on the same host or VPS. In such cases, using `--net=host` should
+have limited impact on security.
 
 ### Use with Pi-hole
 
-[Pi-hole](https://pi-hole.net/) currently [provides documentation](https://docs.pi-hole.net/guides/dns-over-https/) to manually set up DNS-Over-HTTPS with Cloudflared.
+[Pi-hole](https://pi-hole.net/) currently [provides documentation](https://docs.pi-hole.net/guides/dns-over-https/)
+to manually set up DNS-Over-HTTPS with Cloudflared.
 
-With Docker and this image, it's quite easy to use it with [Pi-hole](https://pi-hole.net/). Take a look at this simple [docker compose template](examples/pihole/docker-compose.yml) and you're ready to go.
+With Docker and this image, it's quite easy to use it with [Pi-hole](https://pi-hole.net/).
+Take a look at this simple [docker compose template](examples/pihole/compose.yml),
+and you're ready to go.
 
 ## Upgrade
 
 To upgrade, pull the newer image and launch the container :
 
 ```bash
-docker-compose pull
-docker-compose up -d
+docker compose pull
+docker compose up -d
 ```
 
 ## Contributing
