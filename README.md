@@ -32,6 +32,7 @@ ___
 * [Notes](#notes)
   * [Performance issues](#performance-issues)
   * [Use with Pi-hole](#use-with-pi-hole)
+  * [Use inside Kubernetes](#use-inside-kubernetes)
 * [Contributing](#contributing)
 * [License](#license)
 
@@ -134,6 +135,10 @@ to manually set up DNS-Over-HTTPS with Cloudflared.
 With Docker and this image, it's quite easy to use it with [Pi-hole](https://pi-hole.net/).
 Take a look at this simple [docker compose template](examples/pihole/compose.yml),
 and you're ready to go.
+
+### Use inside Kubernetes
+
+If you want to install this container inside a Kubernetes cluster you can use the [community contributed helm chart](https://charts.pascaliske.dev/charts/cloudflared/).
 
 ## Upgrade
 
