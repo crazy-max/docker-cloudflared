@@ -2,7 +2,7 @@
 
 ARG CLOUDFLARED_VERSION=2024.4.1
 ARG ALPINE_VERSION=3.19
-ARG XX_VERSION=1.2.1
+ARG XX_VERSION=1.4.0
 
 # https://github.com/cloudflare/cloudflared/blob/2024.4.1/.github/workflows/check.yaml#L7
 ARG GO_VERSION=1.21
