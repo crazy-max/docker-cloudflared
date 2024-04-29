@@ -14,8 +14,7 @@
 Docker image for [Cloudflared](https://github.com/cloudflare/cloudflared), a
 proxy-dns service.
 
-> **Note**
-> 
+> [!TIP] 
 > Want to be notified of new releases? Check out 🔔 [Diun (Docker Image Update Notifier)](https://github.com/crazy-max/diun)
 > project!
 
