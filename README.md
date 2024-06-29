@@ -54,19 +54,19 @@ docker buildx bake image-all
 | [Docker Hub](https://hub.docker.com/r/crazymax/cloudflared/)                                           | `crazymax/cloudflared`          |
 | [GitHub Container Registry](https://github.com/users/crazy-max/packages/container/package/cloudflared) | `ghcr.io/crazy-max/cloudflared` |
 
-Following platforms for this image are available:
+The following platforms for this image are available:
 
 ```
-$ docker run --rm mplatform/mquery crazymax/cloudflared:latest
-Image: crazymax/cloudflared:latest
- * Manifest List: Yes
- * Supported platforms:
-   - linux/amd64
-   - linux/arm/v6
-   - linux/arm/v7
-   - linux/arm64
-   - linux/386
-   - linux/ppc64le
+$ docker buildx imagetools inspect crazymax/cloudflared --format "{{json .Manifest}}" | \
+  jq -r '.manifests[] | select(.platform.os != null and .platform.os != "unknown") | .platform | "\(.os)/\(.architecture)\(if .variant then "/" + .variant else "" end)"'
+
+linux/amd64
+linux/arm/v6
+linux/arm/v7
+linux/arm64
+linux/386
+linux/ppc64le
+linux/riscv64
 ```
 
 ## Environment variables
