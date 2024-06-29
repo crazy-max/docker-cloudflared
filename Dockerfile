@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 ARG CLOUDFLARED_VERSION=2024.6.1
-ARG ALPINE_VERSION=3.19
+ARG ALPINE_VERSION=3.20
 ARG XX_VERSION=1.4.0
 
 # https://github.com/cloudflare/cloudflared/blob/2024.6.1/.github/workflows/check.yaml#L7
