@@ -1,10 +1,10 @@
 # syntax=docker/dockerfile:1
 
-ARG CLOUDFLARED_VERSION=2024.10.1
-ARG ALPINE_VERSION=3.20
-ARG XX_VERSION=1.5.0
+ARG CLOUDFLARED_VERSION=2024.12.2
+ARG ALPINE_VERSION=3.21
+ARG XX_VERSION=1.6.1
 
-# https://github.com/cloudflare/cloudflared/blob/2024.10.1/.github/workflows/check.yaml#L7
+# https://github.com/cloudflare/cloudflared/blob/2024.12.2/.github/workflows/check.yaml#L7
 ARG GO_VERSION=1.22
 
 FROM --platform=${BUILDPLATFORM:-linux/amd64} tonistiigi/xx:${XX_VERSION} AS xx
